@@ -17,6 +17,7 @@ client.on("ready", () => {
             client.query('create table if not exists betting( \
                 name text, \
                 pts integer default 0, \
+                pts_month integer default 0, \
                 pts_total integer default 0)', (err, result) => {
             });
             client.query('create table if not exists bet_count( \
@@ -82,11 +83,11 @@ ${reaction.message.content.substr(6,reaction.message.content.length-9)} = + ${pr
       if (err) throw err
         console.log('name '+embName[0]);
       console.log('prize '+prize);
-      client_db.query('UPDATE betting SET pts = pts + $1, pts_total = pts_total + $1 WHERE name = $2', [prize, embName[0]], (err, result) => {
+      client_db.query('UPDATE betting SET pts = pts + $1, pts_month = pts_month + $1, pts_total = pts_total + $1 WHERE name = $2', [prize, embName[0]], (err, result) => {
                 done(err);
               if (result.rowCount == 0){
-               client_db.query('INSERT INTO betting (name, pts, pts_total) VALUES ($1, $2, $3)',
-               [embName[0], prize, prize]);
+               client_db.query('INSERT INTO betting (name, pts, pts_month, pts_total) VALUES ($1, $2, $3, $4)',
+               [embName[0], prize, prize, prize]);
            //    message.channel.send(`Пользователь добавлен в базу.`);
           }
       });
@@ -159,13 +160,18 @@ console.log(ch.length);
   //if ((message.author.id === "374449104258072586") & (message.content.length > 200)) {
    // message.react('🚔');
 
-    if (message.content.startsWith("!clearbet") && message.member.roles.has('370893800173731850')) {
-    pool.connect( (err, client_db, done) => {
-      if (err) throw err
-      client_db.query('UPDATE bet_count SET n_count = 0', (err, result) => {
-                done(err);
+  if (message.content.startsWith("!clearbet") && message.member.roles.has('370893800173731850')) {
+      var args = message.content.slice(1).split(' ');
+      var command = args.shift().toLowerCase();
+    //  && message.member.roles.has('370893800173731850'))
+      pool.query('UPDATE bet_count SET n_count = 0', (err, result) => {
       });
-    });
+      pool.query('UPDATE betting SET pts = 0', (err, result) => {
+          message.channel.send('Информация о текущем туре обновлена.');
+      });
+
+      if (args[0] == 'mon') pool.query('UPDATE betting SET pts_month = 0', (err, result) => {
+      });
  }
     if (message.content.startsWith("!setcount") && message.member.roles.has('370893800173731850')) {
       const args = message.content.slice(prefix.length).split(' ');
@@ -216,6 +222,39 @@ if (message.content.startsWith("!топ-тур")) {
            });
         })
  }
+if (message.content.startsWith("!топ-мес")) {
+     pool.connect( (err, client_db, done) => {
+          if (err) throw err
+          var name = '';
+          var pt = '';
+          var n = 0;
+          client_db.query('SELECT name, pts_month FROM betting ORDER BY pts_month DESC LIMIT 10', (err, res) => {
+                done(err);
+                const data = res.rows;
+                data.forEach(row => {
+                name += `${n+=1}. ${row.name} \n`;
+                if (pt) pt += `${row.pts} \n`; else pt = 0;
+            })
+          message.channel.send({embed:{
+          color: 0xff9312,
+          title: "Топ-10 текущего месяца",
+          fields: [
+            {
+              "name": 'Ник',
+              "value": `**${name}**`,
+              "inline": true
+            },
+            {
+              "name": 'Баллы',
+              "value": `${pt}`,
+              "inline": true
+            }
+            ]      
+          }});
+           });
+        })
+ }
+
 }  
 });
  
