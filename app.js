@@ -38,7 +38,7 @@ client.on('messageReactionAdd', (reaction, user) => {
       embName = embed.title.split(':');
       console.log('coef '+coef);
     })
-  if (reaction.emoji.name === '✅') {
+  if ((reaction.emoji.name === '✅') && (user.id === '330832623435907076')) {
  //   var coef = reaction.message.content.split(':');
 
     var prize = coef[3]*1000;
@@ -50,7 +50,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 ${embMsg.substr(6,embMsg.length-9)} = + ${prize}\`\`\``
                  }})
 }
-  if (reaction.emoji.name === '❎') {
+  if ((reaction.emoji.name === '❎') && (user.id === '330832623435907076')) {
  //   var coef = reaction.message.content.split(':');
 
     var prize = 1000;
@@ -62,7 +62,7 @@ ${embMsg.substr(6,embMsg.length-9)} = + ${prize}\`\`\``
 ${embMsg.substr(6,embMsg.length-9)} +1000\`\`\``
                  }})
 }
-  if (reaction.emoji.name === '❌') {
+  if ((reaction.emoji.name === '❌')  && (user.id === '330832623435907076')) {
  //   var coef = reaction.message.content.split(':');
 
     var prize = -1000;
@@ -98,6 +98,7 @@ ${reaction.message.content.substr(6,reaction.message.content.length-9)} = + ${pr
 //---------------------
 
 client.on("message", (message) => {
+  if (message.channel.id === '615645325964869641') {
 
 if (message.content.startsWith("!bet")) {
   function func(){ 
@@ -131,7 +132,7 @@ console.log(ch.length);
             */ if (one_bet_len - count == 0) count = 0; else count = count - one_bet_len;
             for (i = 1; i <= one_bet_len; i++) {
 
-                  client.channels.get("633252555031445505").send({embed:{
+                  client.channels.get("615645599965904917").send({embed:{
                             color: 0xbbbbbb,
                             title: `${message.member.user.tag}: прогнозов в туре : ${count+i}`,
                             description: `\`\`\`fix
@@ -215,7 +216,7 @@ if (message.content.startsWith("!топ-тур")) {
            });
         })
  }
-        
+}  
 });
  
 client.login(process.env.BOT_TOKEN);
