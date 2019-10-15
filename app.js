@@ -3,7 +3,6 @@ const client = new Discord.Client();
 var pool = require ('./clientpool.js');   
 
 prefix = '!';
-const urlMetadata = require('url-metadata');
 let coef; let embName; let embMsg;
 pool.on('error', (err, client) => {
   console.error('Unexpected error on idle client', err)
