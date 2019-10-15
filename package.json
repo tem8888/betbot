@@ -10,8 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "pg": "^7.12.1",
-    "string-similarity": "^3.0.0",
-    "url-metadata": "^2.4.0"
+    "pg": "^7.12.1"
   }
 }
