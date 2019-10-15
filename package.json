@@ -1,0 +1,17 @@
+{
+  "name": "fmbot",
+  "version": "1.0.0",
+  "description": "Football Manager Discord bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "tem",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "pg": "^7.12.1",
+    "string-similarity": "^3.0.0",
+    "url-metadata": "^2.4.0"
+  }
+}
