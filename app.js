@@ -12,7 +12,7 @@ pool.on('error', (err, client) => {
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.username}`);
-  client.user.setActivity('FM20');
+  client.user.setActivity('Betting');
   pool.connect( (err, client, done) => {
     if(err) throw err; 
             client.query('create table if not exists betting( \
