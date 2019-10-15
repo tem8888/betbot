@@ -1,2 +1,2 @@
-# fmbot
+# betbot
 Discord bot
