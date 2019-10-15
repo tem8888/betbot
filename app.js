@@ -254,6 +254,38 @@ if (message.content.startsWith("!топ-мес")) {
            });
         })
  }
+ if (message.content.startsWith("!топ-общ")) {
+     pool.connect( (err, client_db, done) => {
+          if (err) throw err
+          var name = '';
+          var pt = '';
+          var n = 0;
+          client_db.query('SELECT name, pts_total FROM betting ORDER BY pts_total DESC LIMIT 10', (err, res) => {
+                done(err);
+                const data = res.rows;
+                data.forEach(row => {
+                name += `${n+=1}. ${row.name} \n`;
+                if (pt) pt += `${row.pts} \n`; else pt = 0;
+            })
+          message.channel.send({embed:{
+          color: 0xff9312,
+          title: "Топ-10 за все время",
+          fields: [
+            {
+              "name": 'Ник',
+              "value": `**${name}**`,
+              "inline": true
+            },
+            {
+              "name": 'Баллы',
+              "value": `${pt}`,
+              "inline": true
+            }
+            ]      
+          }});
+           });
+        })
+ }
 
 }  
 });
