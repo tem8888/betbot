@@ -186,7 +186,7 @@ if (message.content.startsWith("!топ-тур")) {
           var name = ''; var pr_c = '';
           var pt = '';
           var n = 0;
-          client_db.query('SELECT name, pts_mth, count_mth FROM betting WHERE pts < 0 OR pts > 0 ORDER BY pts_mth DESC LIMIT 15', (err, res) => {
+          client_db.query('SELECT name, pts_mth, count_mth FROM betting WHERE pts_mth < 0 OR pts_mth > 0 ORDER BY pts_mth DESC LIMIT 15', (err, res) => {
                 done(err);
                 const data = res.rows;
                 data.forEach(row => {
@@ -227,7 +227,7 @@ if (message.content.startsWith("!топ-тур")) {
           var name = ''; var pr_c = '';
           var pt = '';
           var n = 0;
-          client_db.query('SELECT name, pts_total, count_total FROM betting WHERE count_total > 40 ORDER BY pts_mth DESC LIMIT 20', (err, res) => {
+          client_db.query('SELECT name, pts_total, count_total FROM betting WHERE count_total > 40 ORDER BY pts_total DESC LIMIT 20', (err, res) => {
                 done(err);
                 const data = res.rows;
                 data.forEach(row => {
