@@ -96,8 +96,9 @@ ${reaction.message.content.substr(6,reaction.message.content.length-9)} = + ${pr
 
 client.on("message", (message) => {
   if (message.channel.id === '615645325964869641') {
-      func();
+      
       if (message.content.startsWith("!bet")) {
+        func();
         function func(){ 
           var msg = message.content.toString();
           var one_bet_len = message.content.split("\n").length-1;
