@@ -67,7 +67,6 @@ if ((user.id === '330832623435907076') && (reaction.message.channel.id == '61564
  //   var coef = reaction.message.content.split(':');
 
     var prize = -1000;
-    console.log(embMsg.substr(6,embMsg-9));
     reaction.message.edit({embed:{
                             color: 0xff1818,
                             title: `${embName[0]}: прогнозов в туре :${embName[2]}`,
