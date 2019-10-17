@@ -149,7 +149,7 @@ if (message.content.startsWith("!топ-тур")) {
                 done(err);
                 const data = res.rows;
                 data.forEach(row => {
-                name += `${n+=1}. ${row.name} \n`; // имя участника
+                name += `${n+=1}.\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0${row.name} \n`; // имя участника
                 pr_c += `${row.count} \n`; // кол-во прогнозов
                 pr_t += `${row.pts} \n`; // // баллы участника
               //  if (pr_t) pr_t += `${row.pts} \n`; else pr_t = 0;
@@ -161,7 +161,7 @@ if (message.content.startsWith("!топ-тур")) {
           fields: [
             {
               "name": 'Ник',
-              "value": `**${name}**`,
+              "value": `**${name.substr(0, name.length-7)}**`,
               "inline": true
             },
             {
@@ -190,7 +190,7 @@ if (message.content.startsWith("!топ-тур")) {
                 done(err);
                 const data = res.rows;
                 data.forEach(row => {
-                name += `${n+=1}. ${row.name} \n`;
+                name += `${n+=1}.\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0${row.name} \n`;
                 pt += `${row.pts_mth} \n`; // баллы участника
                 pr_c += `${row.count_mth} \n`; // кол-во прогнозов
              //   if (pt) pt += `${row.pts} \n`; else pt = 0;
@@ -202,7 +202,7 @@ if (message.content.startsWith("!топ-тур")) {
           fields: [
             {
               "name": 'Ник',
-              "value": `**${name}**`,
+              "value": `**${name.substr(0, name.length-7)}**`,
               "inline": true
             },
             {
