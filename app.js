@@ -149,7 +149,7 @@ if (message.content.startsWith("!топ-тур")) {
                 done(err);
                 const data = res.rows;
                 data.forEach(row => {
-                name += `${n+=1}.\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0${row.name} \n`; // имя участника
+                name += `${n+=1}.\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0${row.name.substr(0, row.name.length-5)} \n`; // имя участника
                 pr_c += `${row.count} \n`; // кол-во прогнозов
                 pr_t += `${row.pts} \n`; // // баллы участника
               //  if (pr_t) pr_t += `${row.pts} \n`; else pr_t = 0;
@@ -161,12 +161,12 @@ if (message.content.startsWith("!топ-тур")) {
           fields: [
             {
               "name": 'Ник',
-              "value": `**${name}**`,
+              "value": `${name}`,
               "inline": true
             },
             {
               "name": 'Баллы',
-              "value": `${pr_t}`,
+              "value": `**${pr_t}**`,
               "inline": true
             },
             {
