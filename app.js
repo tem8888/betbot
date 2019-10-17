@@ -44,7 +44,7 @@ if ((user.id === '330832623435907076') && (reaction.message.channel.id == '61564
       embName = embed.title.split(':');
     })
   if ((reaction.emoji.name === '✅') && (user.id === '330832623435907076')) {
-    prize = coef[3]*1000;
+    prize = coef[3]*1000-1000;
     won_count += 1;
     reaction.message.edit({embed:{
                             color: 0x18ff93,
