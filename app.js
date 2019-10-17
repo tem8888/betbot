@@ -32,7 +32,7 @@ client.on("ready", () => {
  });
         
 client.on('messageReactionAdd', (reaction, user) => {
-
+if ((user.id === '330832623435907076') && (reaction.message.channel.id == '633252555031445505')) {
     reaction.message.embeds.forEach((embed) => {
       embMsg = embed.description;
       coef = embed.description.split(':');
@@ -92,6 +92,7 @@ ${reaction.message.content.substr(6,reaction.message.content.length-9)} = + ${pr
           }
       });
     });
+  }
 });
 
 //---------------------
