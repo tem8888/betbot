@@ -161,7 +161,7 @@ if (message.content.startsWith("!топ-тур")) {
           fields: [
             {
               "name": 'Ник',
-              "value": `**${name.substr(0, name.length-7)}**`,
+              "value": `**${name}**`,
               "inline": true
             },
             {
