@@ -96,7 +96,6 @@ ${reaction.message.content.substr(6,reaction.message.content.length-9)} = + ${pr
 
 client.on("message", (message) => {
   if (message.channel.id === '615645325964869641') {
-      
       if (message.content.startsWith("!bet")) {
         func();
         function func(){ 
@@ -129,7 +128,7 @@ client.on("message", (message) => {
                                message.reply("вы превысили максимум прогнозов на этот тур: " + `${count}` + ". Учтутся только первые 10.");} 
                          if (one_bet_len - count == 0) count = 0; else count = count - one_bet_len;
                         for (i = 1; i <= one_bet_len; i++) {
-                            client.channels.get("633252555031445505").send({embed:{
+                            client.channels.get("615645599965904917").send({embed:{
                                 color: 0x666666,
                                 title: `${message.member.user.tag}: прогнозов в туре : ${count+i}`,
                                 description: `\`\`\`diff
