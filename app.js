@@ -105,7 +105,7 @@ client.on("message", (message) => {
 
       for (i = 1; i <= one_bet_len; i++) {
           ch = one_bet[i].split(':');
-          if (!one_bet[i].substr(-4).includes('.')) return message.reply('неверный разделитель в коэффициенте. Пример: **1.68**');
+          if (!one_bet[i].substr(-4).includes('.')) one_bet[i] = one_bet[i].replace(/,/g,'.');
           if (ch.length != 3) return message.reply('неверные разделители. Пример: **Украина - Португалия : ТБ2.5 : 1.68**');
       }
          pool.connect( async function(err, client_db, done) {
