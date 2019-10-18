@@ -60,7 +60,7 @@ if ((user.id === '330832623435907076') && (reaction.message.channel.id == '61564
                             color: 0xff9318,
                             title: `${embName[0]}: прогнозов в туре :${embName[2]}`,
                             description: `\`\`\`diff
-возврат ${embMsg.substr(8,embMsg.length-12)}\`\`\``
+---возврат ${embMsg.substr(8,embMsg.length-12)}\`\`\``
                  }})
 }
   if ((reaction.emoji.name === '❌')  && (user.id === '330832623435907076')) {
