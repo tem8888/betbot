@@ -44,7 +44,7 @@ if ((user.id === '330832623435907076') && (reaction.message.channel.id == '61564
       embName = embed.title.split(':');
     })
   if ((reaction.emoji.name === '✅') && (user.id === '330832623435907076')) {
-    prize = coef[3]*1000-1000;
+    prize = coef[2]*1000-1000;
     won_count += 1;
     reaction.message.edit({embed:{
                             color: 0x18ff93,
@@ -106,7 +106,7 @@ client.on("message", (message) => {
       for (i = 1; i <= one_bet_len; i++) {
           ch = one_bet[i].split(':');
           if (!one_bet[i].substr(-4).includes('.')) one_bet[i] = one_bet[i].replace(/,/g,'.');
-          if (ch.length != 3) return message.reply('неверные разделители. Пример: **Украина - Португалия : ТБ2.5 : 1.68**');
+          if (ch.length != 2) return message.reply('неверные разделители. Пример: **Украина - Португалия, ТБ2.5 : 1.68**');
       }
          pool.connect( async function(err, client_db, done) {
             if (err) throw err 
